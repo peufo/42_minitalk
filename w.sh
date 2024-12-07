@@ -35,11 +35,12 @@ watch() {
 			rm -f "$CLIENT"
 			rm -f "$SERVER"
 			make
-			if [ ! -f "$CLIENT" || ! -f "$SERVER" ]; then
+			if [ ! -f "$CLIENT" -o ! -f "$SERVER" ]; then
 				warning "COMPILATION FAILED"
 			else
 				success "COMPILATION OK, RUN TEST..."
 				$SERVER
+				$CLIENT
 
 				#SERVER_LEAKS=$(leaks -atExit -quiet -- $SERVER)
 				#if [ $? ]; then

@@ -6,13 +6,14 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 15:30:33 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/07 15:30:43 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:04:19 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
 
-int	main()
+int	main(void)
 {
 	ft_printf("HEY I'm the server");
+	return (0);
 }

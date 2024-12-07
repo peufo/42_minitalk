@@ -6,13 +6,12 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 15:12:15 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/07 15:13:36 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:04:29 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SERVER_H
 # define SERVER_H
 # include "ft_printf.h"
-
 
 #endif

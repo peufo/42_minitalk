@@ -6,13 +6,13 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 15:11:42 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/07 16:02:51 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:03:52 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "client.h"
 
-int	main()
+int	main(void)
 {
 	ft_printf("HEY I'm the client");
 	return (0);
