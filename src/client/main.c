@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 15:11:42 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/08 14:22:47 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/08 14:31:24 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,14 @@ static short	get_next_bit(char **msg)
 
 	if (i == 8)
 	{
+		if (**msg == '\0')
+		{
+			*msg = NULL;
+			return (-1);
+		}
 		i = 0;
 		(*msg)++;
 	}
-	if (**msg == '\0')
-		return (-1);
 	c = **msg;
 	bit = (c >> (7 - i)) % 2;
 	i++;
@@ -77,7 +80,7 @@ int	main(int ac, char **av)
 	signal(SIGUSR1, handle_response);
 	signal(SIGUSR2, handle_response);
 	send_next_bit(process_id, &msg);
-	while (*msg)
+	while (msg)
 		pause();
 	return (0);
 }

@@ -6,11 +6,61 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 15:30:33 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/08 14:20:00 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/08 16:10:18 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
+
+static int	terminate(char *error)
+{
+	if (!error)
+		return (0);
+	ft_printf("Error: %s\n", error);
+	exit(1);
+}
+
+static void	ensure_msg_heap(t_message *msg)
+{
+	char	*new;
+
+	if (!msg->len)
+	{
+		msg->len = 1;
+		msg->content = malloc(msg->len + 1);
+		msg->logger = msg->content;
+		if (!msg->content)
+			terminate("Malloc failed");
+	}
+	if (msg->logger - msg->content == msg->len)
+	{
+		msg->len *= 2;
+		new = malloc(msg->len + 1);
+		if (!new)
+		{
+			free(msg->content);
+			terminate("Malloc failed");
+		}
+		ft_strcpy(new, msg->content);
+		msg->logger = new + (msg->logger - msg->content);
+		free(msg->content);
+		msg->content = new;
+	}
+}
+
+static void	next_char(char c)
+{
+	static t_message	msg;
+
+	ensure_msg_heap(&msg);
+	*(msg.logger++) = c;
+	if (c == '\0')
+	{
+		ft_printf("%s", msg.content);
+		free(msg.content);
+		msg.len = 0;
+	}
+}
 
 static void	handle_signal(int signo, siginfo_t *info, void *ctx)
 {
@@ -25,7 +75,7 @@ static void	handle_signal(int signo, siginfo_t *info, void *ctx)
 	i++;
 	if (i == 8)
 	{
-		write(1, &c, 1);
+		next_char(c);
 		i = 0;
 		c = '\0';
 	}
