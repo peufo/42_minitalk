@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 15:11:42 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/08 01:58:48 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/08 02:24:38 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	send_next_bit(int process_id, char **message)
 	bit = get_next_bit(msg);
 	if (bit != -1)
 	{
-		ft_printf("OUT: %d,	", bit);
+		//ft_printf("OUT: %d,	", bit);
 		kill(pid, SIGUSR1 + bit);
 	}
 	return ;
@@ -56,7 +56,8 @@ static void	send_next_bit(int process_id, char **message)
 
 static void handle_response(int signo)
 {
-	ft_printf("IN: %d\n", signo - SIGUSR1);
+	//ft_printf("IN: %d\n", signo - SIGUSR1);
+	(void)signo;
 	send_next_bit(0, NULL);
 }
 
