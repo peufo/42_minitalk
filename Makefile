@@ -17,6 +17,8 @@ FLAGS		=	-Wall -Wextra -Werror -fsanitize=address
 
 all: $(CLIENT_NAME) $(SERVER_NAME)
 
+bonus: $(CLIENT_NAME) $(SERVER_NAME)
+
 $(CLIENT_NAME): $(CLIENT_OBJECTS)
 	@make -C $(FT_PRINTF)
 	@cc $(CLIENT_OBJECTS) $(FLAGS) -L $(FT_PRINTF) -lftprintf -o $@
