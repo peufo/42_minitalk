@@ -2,6 +2,13 @@
   "files.associations": {
     "*.astro": "astro",
     "client.h": "c",
-    "server.h": "c"
+    "server.h": "c",
+    "signal.h": "c",
+    "stdlib.h": "c",
+    "unistd.h": "c",
+    "siginfo.h": "c",
+    "signal-defs.h": "c",
+    "sigaction.h": "c",
+    "ft_printf.h": "c"
   }
 }

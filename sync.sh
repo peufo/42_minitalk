@@ -8,7 +8,7 @@ sync() {
 
 	SED_CLIENT_COMMAND="s;^CLIENT_SOURCES	.*;CLIENT_SOURCES		=	$CLIENT_SOURCES;"
 	SED_SERVER_COMMAND="s;^SERVER_SOURCES	.*;SERVER_SOURCES		=	$SERVER_SOURCES;"
-	if [[ $(uname) == "Linux" ]];  then
+	if [ $(uname) = "Linux" ];  then
 		sed -i -e "$SED_CLIENT_COMMAND" Makefile
 		sed -i -e "$SED_SERVER_COMMAND" Makefile
 	else

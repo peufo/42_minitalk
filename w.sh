@@ -39,6 +39,7 @@ watch() {
 				warning "COMPILATION FAILED"
 			else
 				success "COMPILATION OK"
+				valgrind --leak-check=full --log-file=leak.log -s $SERVER
 			fi
 		fi
 		sleep 0.1

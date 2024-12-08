@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
+/*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 15:11:42 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/08 14:31:24 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/08 16:33:53 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static short	get_next_bit(char **msg)
 	unsigned char	c;
 	short			bit;
 
+	if (!*msg)
+		return (-1);
 	if (i == 8)
 	{
 		if (**msg == '\0')

@@ -13,7 +13,7 @@ SERVER_FUNCTIONS	=	$(subst .c,,$(SERVER_SOURCES))
 SERVER_OBJECTS		=	$(addsuffix .o, $(addprefix $(SERVER_DIR_BUILD)/, $(SERVER_FUNCTIONS)))
 
 FT_PRINTF	=	./lib/ft_printf
-FLAGS		=	-Wall -Wextra -Werror -fsanitize=address
+FLAGS		=	-Wall -Wextra -Werror
 
 all: $(CLIENT_NAME) $(SERVER_NAME)
 
