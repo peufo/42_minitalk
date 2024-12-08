@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 15:11:42 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/08 02:24:38 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/08 02:46:24 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,19 @@ static int	terminate(char *error)
 static short	get_next_bit(char **msg)
 {
 	static short	i;
-	short			bit;
+	unsigned char	c;
+	short	bit;
 
 	if (i == 8) {
 		i = 0;
 		(*msg)++;
 	}
-	if (!**msg)
+	if (**msg == '\0')
 		return (-1);
-	bit = (**msg >> (7 - i)) % 2;
+	c = **msg;
+	//ft_printf("msg: %s, %d, %d\n", *msg, **msg, i);
+	bit = (c >> (7 - i)) % 2;
+	//ft_printf("bit: %d\n", bit);
 	i++;
 	return (bit);
 }
