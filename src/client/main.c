@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 15:11:42 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/08 01:51:24 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/08 01:58:48 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static void	send_next_bit(int process_id, char **message)
 
 static void handle_response(int signo)
 {
-	//(void)signo;
 	ft_printf("IN: %d\n", signo - SIGUSR1);
 	send_next_bit(0, NULL);
 }
