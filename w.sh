@@ -38,21 +38,7 @@ watch() {
 			if [ ! -f "$CLIENT" -o ! -f "$SERVER" ]; then
 				warning "COMPILATION FAILED"
 			else
-				success "COMPILATION OK, RUN TEST..."
-				SERVER_PID=$($SERVER)
-
-				echo "server pid: $SERVER_PID"
-
-				#$CLIENT
-
-				#SERVER_LEAKS=$(leaks -atExit -quiet -- $SERVER)
-				#if [ $? ]; then
-				#	success "\nNO LEAKS ON '$SERVER'"
-				#else
-				#	warning "\nLEAKS DETECTED ON '$SERVER'"
-				#	echo "$SERVER_LEAKS"
-				#fi
-
+				success "COMPILATION OK"
 			fi
 		fi
 		sleep 0.1

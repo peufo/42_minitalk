@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 15:12:15 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/07 18:17:12 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/08 14:20:10 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <unistd.h>
 # include <signal.h>
 # include "ft_printf.h"
+
 int	ft_atoi(const char *str);
 int	ft_isint(char *str);
 

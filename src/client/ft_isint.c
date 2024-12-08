@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 23:53:41 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/07 18:20:12 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/08 14:23:05 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	ft_strlen(char *str)
 	len = 0;
 	while (str[len])
 		len++;
-	return len;
+	return (len);
 }
 
 static int	ft_isover(char *str, char *limit)

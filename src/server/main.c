@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 15:30:33 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/08 02:23:36 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/08 14:20:00 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	main(void)
 	struct sigaction	sig;
 
 	ft_printf("%d\n", getpid());
-	
 	sig.sa_sigaction = handle_signal;
 	sig.sa_flags = SA_SIGINFO | SA_NODEFER | SA_RESTART;
 	sigemptyset(&sig.sa_mask);

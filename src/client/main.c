@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 15:11:42 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/08 02:46:24 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/08 14:22:47 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,22 @@ static int	terminate(char *error)
 	ft_printf("Error: %s\n", error);
 	return (1);
 }
+
 static short	get_next_bit(char **msg)
 {
 	static short	i;
 	unsigned char	c;
-	short	bit;
+	short			bit;
 
-	if (i == 8) {
+	if (i == 8)
+	{
 		i = 0;
 		(*msg)++;
 	}
 	if (**msg == '\0')
 		return (-1);
 	c = **msg;
-	//ft_printf("msg: %s, %d, %d\n", *msg, **msg, i);
 	bit = (c >> (7 - i)) % 2;
-	//ft_printf("bit: %d\n", bit);
 	i++;
 	return (bit);
 }
@@ -51,16 +51,12 @@ static void	send_next_bit(int process_id, char **message)
 		msg = message;
 	bit = get_next_bit(msg);
 	if (bit != -1)
-	{
-		//ft_printf("OUT: %d,	", bit);
 		kill(pid, SIGUSR1 + bit);
-	}
 	return ;
 }
 
-static void handle_response(int signo)
+static void	handle_response(int signo)
 {
-	//ft_printf("IN: %d\n", signo - SIGUSR1);
 	(void)signo;
 	send_next_bit(0, NULL);
 }
