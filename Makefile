@@ -1,7 +1,7 @@
 CLIENT_NAME			=	client
 CLIENT_DIR_SRC		=	./src/client
 CLIENT_DIR_BUILD	=	./build/client
-CLIENT_SOURCES		=	main.c 
+CLIENT_SOURCES		=	ft_atoi.c ft_isint.c main.c 
 CLIENT_FUNCTIONS	=	$(subst .c,,$(CLIENT_SOURCES))
 CLIENT_OBJECTS		=	$(addsuffix .o, $(addprefix $(CLIENT_DIR_BUILD)/, $(CLIENT_FUNCTIONS)))
 

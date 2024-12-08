@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    "*.astro": "astro",
+    "client.h": "c",
+    "server.h": "c"
+  }
+}

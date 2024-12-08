@@ -39,8 +39,11 @@ watch() {
 				warning "COMPILATION FAILED"
 			else
 				success "COMPILATION OK, RUN TEST..."
-				$SERVER
-				$CLIENT
+				SERVER_PID=$($SERVER)
+
+				echo "server pid: $SERVER_PID"
+
+				#$CLIENT
 
 				#SERVER_LEAKS=$(leaks -atExit -quiet -- $SERVER)
 				#if [ $? ]; then
