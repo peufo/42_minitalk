@@ -6,7 +6,7 @@
 /*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 15:11:42 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/09 12:17:15 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/09 14:04:41 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ static void	handle_response(int signo, siginfo_t *info, void *ctx)
 int	main(int ac, char **av)
 {
 	struct sigaction	sig;
-	char	*msg;
-	int		process_id;
+	char				*msg;
+	int					process_id;
 
 	if (ac != 3)
 		return (terminate("Bad arguments (int server_pid, char *message)"));
