@@ -8,7 +8,7 @@ CLIENT_OBJECTS		=	$(addsuffix .o, $(addprefix $(CLIENT_DIR_BUILD)/, $(CLIENT_FUN
 SERVER_NAME			=	server
 SERVER_DIR_SRC		=	./src/server
 SERVER_DIR_BUILD	=	./build/server
-SERVER_SOURCES		=	main.c 
+SERVER_SOURCES		=	ft_calloc.c main.c 
 SERVER_FUNCTIONS	=	$(subst .c,,$(SERVER_SOURCES))
 SERVER_OBJECTS		=	$(addsuffix .o, $(addprefix $(SERVER_DIR_BUILD)/, $(SERVER_FUNCTIONS)))
 

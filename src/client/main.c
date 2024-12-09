@@ -6,7 +6,7 @@
 /*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 15:11:42 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/08 16:33:53 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/09 12:17:15 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static short	get_next_bit(char **msg)
 		(*msg)++;
 	}
 	c = **msg;
-	bit = (c >> (7 - i)) % 2;
+	bit = (c >> (7 - i)) & 1;
 	i++;
 	return (bit);
 }
@@ -55,19 +55,24 @@ static void	send_next_bit(int process_id, char **message)
 	if (message)
 		msg = message;
 	bit = get_next_bit(msg);
-	if (bit != -1)
-		kill(pid, SIGUSR1 + bit);
+	if (bit == 0)
+		kill(pid, SIGUSR1);
+	if (bit == 1)
+		kill(pid, SIGUSR2);
 	return ;
 }
 
-static void	handle_response(int signo)
+static void	handle_response(int signo, siginfo_t *info, void *ctx)
 {
 	(void)signo;
+	(void)info;
+	(void)ctx;
 	send_next_bit(0, NULL);
 }
 
 int	main(int ac, char **av)
 {
+	struct sigaction	sig;
 	char	*msg;
 	int		process_id;
 
@@ -79,8 +84,11 @@ int	main(int ac, char **av)
 	msg = av[2];
 	if (!process_id)
 		return (terminate("server_pid can't be set to 0"));
-	signal(SIGUSR1, handle_response);
-	signal(SIGUSR2, handle_response);
+	sig.sa_sigaction = handle_response;
+	sig.sa_flags = SA_SIGINFO | SA_NODEFER | SA_RESTART;
+	sigemptyset(&sig.sa_mask);
+	sigaction(SIGUSR1, &sig, NULL);
+	sigaction(SIGUSR2, &sig, NULL);
 	send_next_bit(process_id, &msg);
 	while (msg)
 		pause();

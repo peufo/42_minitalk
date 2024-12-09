@@ -6,12 +6,11 @@
 /*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 15:30:33 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/08 18:38:03 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/09 12:33:40 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
-
 
 int	terminate(char *error)
 {
@@ -28,7 +27,7 @@ void	ensure_msg_len(t_message *msg)
 	if (!msg->len)
 	{
 		msg->len = 1;
-		msg->content = malloc(msg->len + 1);
+		msg->content = ft_calloc(msg->len + 1);
 		msg->logger = msg->content;
 		if (!msg->content)
 			terminate("Malloc failed");
@@ -36,7 +35,7 @@ void	ensure_msg_len(t_message *msg)
 	if (msg->logger - msg->content == msg->len - 1)
 	{
 		msg->len *= 2;
-		new = malloc(msg->len + 1);
+		new = ft_calloc(msg->len + 1);
 		if (!new)
 		{
 			free(msg->content);
@@ -74,7 +73,7 @@ void	handle_signal(int signo, siginfo_t *info, void *ctx)
 	(void)c;
 	(void)i;
 	(void)bit;
-	bit = (signo - SIGUSR1) % 2;
+	bit = signo == SIGUSR2;
 	c <<= 1;
 	c += bit;
 	i++;
@@ -86,7 +85,6 @@ void	handle_signal(int signo, siginfo_t *info, void *ctx)
 	}
 	kill(info->si_pid, signo);
 }
-
 
 int	main(void)
 {
